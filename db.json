@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "grFBRgubO2yJ7GW22C_ts",
+      "name": "Артемий",
+      "birthdate": "2025-02-10",
+      "gender": "male",
+      "interests": [
+        "Медитация",
+        "Энергетические практики"
+      ],
+      "preferences": [
+        "Human Design",
+        "Натальная карта"
+      ]
+    }
+  ]
+}
