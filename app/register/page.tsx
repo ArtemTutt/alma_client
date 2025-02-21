@@ -48,37 +48,39 @@ export default function Register() {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        setGlobalFormData(formData);
-        console.log("Форма отправлена:", formData);
-        router.push('/main');
-    };
-
-
-    // Добавление изера в базу данных
-    // const handleSubmit = async (e: React.FormEvent) => {
+    // // Добавление изера в базу данных (для TMA)
+    // const handleSubmit = (e: React.FormEvent) => {
     //     e.preventDefault();
-
-    //     try {
-    //         const response = await fetch('/api/register', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(formData),
-    //         });
-
-    //         if (!response.ok) throw new Error('Registration failed');
-
-    //         const result = await response.json();
-    //         console.log('User created:', result);
-    //         // Здесь можно добавить редирект или обновление состояния
-    //         router.push('/main');
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //     }
+    //     setGlobalFormData(formData);
+    //     console.log("Форма отправлена:", formData);
+    //     router.push('/main');
     // };
+
+
+    // Добавление изера в базу данных (локально)
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error('Registration failed');
+
+            const result = await response.json();
+            setGlobalFormData(formData);
+            console.log('User created:', result);
+            // Здесь можно добавить редирект или обновление состояния
+            router.push('/main');
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-background text-text">
